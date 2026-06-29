@@ -7,12 +7,12 @@ A smart, lightweight, and fully automated single-click solution for upgrading Wi
 ---
 
 ## 🌍 Language / زبان
-- [English (#-english)](#-english)
-- [فارسی (#-فارسی)](#-فارسی)
+- [English](#english)
+- [فارسی](#فارسی)
 
 ---
 
-## 🇺🇸 English
+## English
 
 ### 📝 Description
 In many enterprise environments, production servers and corporate client machines do not have direct access to the Internet and must route traffic through a local proxy. **Winget Enterprise Automated Updater** is a single-file Batch script (`.bat`) designed for network administrators and DevOps engineers to seamlessly audit, fetch, and deploy Windows software updates via Microsoft Winget, bypassing network restrictions and sanctions automatically.
@@ -36,3 +36,51 @@ Before running the script, open the `.bat` file with any text editor and update 
 ```cmd
 set "PROXY_IP=10.10.1.119"   :: Replace with your Proxy Server IP
 set "PROXY_PORT=10809"       :: Replace with your Proxy Port
+```
+
+## فارسی
+📝 توصیف پروژه
+در بسیاری از سازمان‌ها و اتاق‌های سرور (Data Centers)، سرورهای تولیدی و کلاینت‌ها دسترسی مستقیم به اینترنت ندارند و مجبورند از یک پروکسی محلی عبور کنند. افزون بر این، محدودیت‌ها و تحریم‌های بین‌المللی مانع آپدیت مستقیم نرم‌افزارها می‌شوند. این اسکریپت تک‌فایلی Batch (.bat) به لایه زیرساخت و مدیران شبکه کمک می‌کند تا تنها با یک کلیک، فرآیند بررسی و به‌روزرسانی نرم‌افزارها را از طریق ابزار رسمی مایکروسافت (Winget) زیر سایه پروکسی به صورت کاملاً امن و خودکار جلو ببرند.
+
+✨ ویژگی‌های برجسته
+اجرای تک‌کلیک بدون نیاز به ساخت فایل پاوِرشِل: برطرف کردن چالش‌های مسدودی خط‌مشی امنیت اجرا (ExecutionPolicy) در ویندوز سرور.
+
+ارتقای خودکار سطح دسترسی (Self-Elevation): درخواست هوشمند دسترسی ادمین (UAC)؛ در صورتی که کاربر عادی اسکریپت را اجرا کند، کادر استاندارد ویندوز برای ورود نام کاربری و رمز عبور ادمین شبکه ظاهر می‌شود.
+
+استقرار خودکار و هوشمند Winget: اسکریپت بررسی می‌کند که آیا ابزار winget روی سیستم نصب است یا خیر (این ابزار به صورت پیش‌فرض روی ویندوز سرورها نصب نیست). در صورت عدم وجود، پیش‌نیازهای ساختاری دات‌نت (VCLibs و UI Xaml) و پکیج اصلی را کاملاً در پس‌زمینه و سایلنت از گیت‌هاب رسمی مایکروسافت دانلود و مستقر می‌کند.
+
+تست زنده پیش از اتصال (Gateway Ping Check): پیش از دستکاری تنظیمات شبکه، ابتدا آی‌پي پروکسی را پینگ می‌کند تا در صورت خاموش بودن سرور واسط، اینترنت سیستم قفل نشود.
+
+بازگردانی حتمی تنظیمات شبکه (Rollback): تضمین ۱۰۰ درصدی ریست شدن و پاک‌سازی پروکسی سیستم (winhttp) پس از اتمام کار یا در صورت بروز هرگونه خطا.
+
+گزارش‌گیری سازمانی (Logging): ثبت تاریخچه و وضعیت پکیج‌های آپدیت شده در فایل خروجی winget_upgrade_report.log جهت مانیتورینگ ادمین‌ها.
+
+پشتیبانی از حالت سایلنت: قابلیت ست شدن در Task Scheduler ویندوز با آرگومان /silent جهت آپدیت خودکار دوره‌ای (مثلاً ساعت ۳ بامداد).
+
+💻 سیستم‌عامل‌های تحت پشتیبانی
+این ابزار به طور کامل روی نسخه‌های کلاینت و سرور تست شده و پایدار است:
+
+ویندوز سرور: نسخه‌های 2016 / 2019 / 2022 / 2025 (ویرایش‌های Standard، Datacenter و Core)
+
+ویندوز کلاینت: ویندوز 10 و ویندوز 11 (ویرایش‌های Pro، Enterprise و Education)
+
+⚙️ راهنمای تنظیمات پروکسی
+قبل از اولین اجرا، فایل .bat را با یک ادیتور (مثل Notepad) باز کنید و آدرس پروکسی داخلی شبکه خود را در خطوط زیر جایگزین نمایید:
+
+```cmd
+set "PROXY_IP=10.10.1.119"   :: آی‌پی سرور پروکسی شما
+set "PROXY_PORT=10809"       :: پورت پروکسی شما
+```
+🚀 نحوه استفاده
+فایل UpdateAll.bat را روی دسکتاپ سیستم یا سرور قرار دهید.
+
+روی آن دبل‌کلیک کنید.
+
+اسکریپت پس از ست کردن پروکسی، لیست آپدیت‌های موجود را به شما نشان می‌دهد؛ کلید y را برای شروع ارتقای فله‌ای وارد کنید یا بگذارید به صورت زمان‌بندی شده کارش را انجام دهد.
+
+Developer: Omid Mohammadzadeh
+
+License: MIT
+
+
+با جایگزینی این کد، ساختار لینک‌ها اصلاح شده و کاربر با کلیک روی هر زبان، مستقیماً به بخش مربوطه اسکرول خواهد شد. خسته نباشید، پروژه فوق‌العاده‌ای شد!
